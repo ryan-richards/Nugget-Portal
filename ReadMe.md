@@ -38,10 +38,6 @@ When a user connects to your Wi-Fi network, they will be redirected to the capti
 
 To handle user authentication, you can implement custom logic within the Arduino sketch, such as checking credentials against a database or requiring users to accept terms and conditions.
 
-## Example
-
-An example implementation for a simple captive portal is provided in the code. You can extend this example to suit your specific use case.
-
 ## Troubleshooting
 
 If you encounter any issues or have questions, please refer to the project's issue tracker or community forums for assistance.
