@@ -38,6 +38,18 @@ void Screen::displayWaitingForVictim() {
   display.display();
 }
 
+void Screen::displayStartingAP(uint8_t sec) {
+  display.clear();
+  display.drawXbm(0, 0, 128, 64, starting_ap_bits);
+  display.drawString(3, 15, "Starting AP");
+  display.drawString(3, 25, sectionText);
+  display.drawLine(0, 53, 127, 53);
+  display.drawLine(0, 54, 127, 54);
+  display.drawString(0, 54, sectionText);
+  display.display();
+  delay(sec * 1000);
+}
+
 void Screen::displayCredsFound(String username, String password) {
   display.clear();
   display.drawXbm(0, 0, 128, 64, high_signal_bits);
@@ -66,7 +78,7 @@ void Screen::displayCredsFound(String username, String password) {
 void Screen::updateSectionText(const char* newText) {
   sectionText = newText;
   display.setColor(BLACK);
-  display.fillRect(0, 53, 128, 10);
+  display.fillRect(0, 55, 128, 9);
   display.setColor(WHITE);
 
   // Draw the new text in the same location

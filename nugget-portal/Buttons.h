@@ -11,6 +11,7 @@ public:
   Buttons();
   static void setupButtons();
   static void updateButtons();
+  static void updateScreenWithActiveSSID();
 };
 
 #endif
