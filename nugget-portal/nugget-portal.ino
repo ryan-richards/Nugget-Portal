@@ -11,6 +11,7 @@
 
 #include "Vars.h"
 #include "Buttons.h"
+#include "NeoPixel.h"
 
 const char *ssid = "Guest_Wifi";
 const char *password = NULL;
@@ -27,6 +28,8 @@ void setup() {
   Screen::initDisplay();
   Screen::displaySplash(3);
   Screen::displayWaitingForVictim();
+
+  NeoPixel::setupNeoPixel();
 
   // Print a welcome message to the Serial port.
   Serial.println("\n\nNUGGET PORTAL, V1.0 compiled " __DATE__ " " __TIME__ " by Ryan");
