@@ -4,6 +4,7 @@
 #include <Bounce2.h>
 #include "Vars.h"
 #include "Screen.h"
+#include "NeoPixel.h"
 #include "WifiControl.h"
 
 Bounce b = Bounce();
@@ -55,6 +56,7 @@ void Buttons::updateButtons() {
         case 1: // Button 1 (dn_btn) was pressed
           // Add your logic for the "down" button here
           // Example: perform an action for the "down" button
+          NeoPixel::setNeoPixelColour("green");
           Screen::displayWaitingForVictim();
           break;
         case 2: // Button 2 (lt_btn) was pressed

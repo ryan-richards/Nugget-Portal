@@ -10,7 +10,7 @@ void NeoPixel::setupNeoPixel() {
   strip.begin();
   strip.clear();
   strip.show();
-  strip.setPixelColor(0, strip.Color(0, 255, 0));
+  strip.setPixelColor(0, strip.Color(0, 0, 0));
   strip.show();
   strip.setBrightness(100);
 }
@@ -44,4 +44,14 @@ void NeoPixel::setNeoPixelColour(String colour) {
     strip.setPixelColor(0, strip.Color(0, 0, 0));
     strip.show();
   }
+}
+
+void NeoPixel::flash(int numberOfFlashes, const std::vector<String>& colors, String finalColour) {
+  for (int i = 0; i < numberOfFlashes; ++i) {
+    for (const auto& color : colors) {
+      setNeoPixelColour(color);
+      delay(500);
+    }
+  }
+  setNeoPixelColour(finalColour);
 }

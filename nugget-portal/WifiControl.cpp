@@ -10,6 +10,7 @@
 #include <WiFiUdp.h>
 #include <esp_wifi.h>
 #include "Vars.h"
+#include "NeoPixel.h"
 
 #include "WifiControl.h"
 
@@ -35,6 +36,9 @@ void WifiControl::startSoftAccessPoint(const char *ssid, const char *password, c
 
     // Start the new soft access point with the given ssid, password, channel, max number of clients
     WiFi.softAP(ssid, password, WIFI_CHANNEL, 0, MAX_CLIENTS);
+
+    std::vector<String> colors = {"blue", "off"};
+    NeoPixel::flash(3, colors, "green");
 
     // Disable AMPDU RX on the ESP32 WiFi to fix a bug on Android
     esp_wifi_stop();
