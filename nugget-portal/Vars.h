@@ -1,6 +1,9 @@
 #ifndef VARS_H
 #define VARS_H
 
+//Nugget
+#define IS_NUGGET true
+
 //LittleFS
 #define FORMAT_LITTLEFS_IF_FAILED true
 
@@ -12,9 +15,7 @@ const IPAddress localIP(4, 3, 2, 1);
 const IPAddress gatewayIP(4, 3, 2, 1);
 const IPAddress subnetMask(255, 255, 255, 0);
 
-const int numSSIDs = 5; // Number of SSIDs
-
-extern const char* ssids[numSSIDs]; 
+extern const char* ssids[]; 
 
 // Buttons
 #define up_btn 9   // up button

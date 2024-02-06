@@ -20,8 +20,8 @@ void Screen::initDisplay() {
 
 void Screen::displaySplash(uint8_t sec) {
   display.clear();
-  display.drawString(35, 25, "NUGGET AP");
-  display.drawString(52, 40, "@Catzpacho");
+  display.drawString(35, 25, "NUGGET Portal");
+  display.drawString(52, 40, "@catzpacho");
   display.drawString(20, 40, "v1.0");
   display.display();
   delay(sec * 1000);

@@ -23,16 +23,18 @@ void setup() {
   Serial.setRxBufferSize(1024);
   Serial.begin(115200);
 
-  Buttons::setupButtons();
+  if (IS_NUGGET) {
+    Buttons::setupButtons();
 
-  Screen::initDisplay();
-  Screen::displaySplash(3);
-  Screen::displayWaitingForVictim();
+    Screen::initDisplay();
+    Screen::displaySplash(3);
+    Screen::displayWaitingForVictim();
 
-  NeoPixel::setupNeoPixel();
+    NeoPixel::setupNeoPixel();
+  }
 
   // Print a welcome message to the Serial port.
-  Serial.println("\n\nNUGGET PORTAL, V1.0 compiled " __DATE__ " " __TIME__ " by Ryan");
+  Serial.println("\n\nNUGGET PORTAL, V1.0 compiled " __DATE__ " " __TIME__ " by catzpacho");
   Serial.printf("%s-%d\n\r", ESP.getChipModel(), ESP.getChipRevision());
 
   WifiControl::startSoftAccessPoint(ssid, password, localIP, gatewayIP);
@@ -43,7 +45,7 @@ void setup() {
     Serial.println("LittleFs Mount Failed");
     return;
   }
- 
+
   server.begin();
 
   Serial.print("\n");
@@ -55,7 +57,9 @@ void setup() {
 void loop() {
   dnsServer.processNextRequest();
 
-  Buttons::updateButtons();
-
+  if (IS_NUGGET) {
+     Buttons::updateButtons();
+  }
+  
   delay(DNS_INTERVAL);
 }

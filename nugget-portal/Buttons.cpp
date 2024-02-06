@@ -17,13 +17,15 @@ int currentSSIDIndex = 0;  // Initialize the current SSID index to 0
 const char* activeAP = nullptr; // Store the currently active AP SSID
 
 // Define the ssids array with actual SSID values
-const char* ssids[numSSIDs] = {
+const char* ssids[] = {
     "Guest_Wifi",
     "Starbucks_Wifi",
     "BelfastWiFi",
     "Costa_Free_WiFi",
     "Customer_WiFi"
 };
+
+int numSSIDs = sizeof(ssids) / sizeof(ssids[0]); 
 
 Buttons::Buttons() {
 }
