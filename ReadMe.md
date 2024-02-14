@@ -1,9 +1,5 @@
 # Nugget Portal
 
-## Introduction
-
-This README file provides a comprehensive guide for setting up and using a WiFi captive portal on an ESP32-S2 Mini microcontroller using the WiFi-Nugget platform. A captive portal is a web page that users see when they connect to a public Wi-Fi network.
-
 ### Features
 
 - Easy integration with the ESP32-S2 Mini.
@@ -38,18 +34,6 @@ When a user connects to your Wi-Fi network, they will be redirected to the capti
 
 To handle user authentication, you can implement custom logic within the Arduino sketch, such as checking credentials against a database or requiring users to accept terms and conditions.
 
-## Troubleshooting
-
-If you encounter any issues or have questions, please refer to the project's issue tracker or community forums for assistance.
-
-## Contributing
-
-We welcome contributions from the community. If you have ideas for improvements or bug fixes, please open an issue or submit a pull request on the GitHub repository.
-
-## License
-
-This project is open-source and released under the [MIT License](LICENSE).
-
 ## Credits
 
 This project was heavily inspired and adapted from this project by HakCat-Tech - [SSDP-Phisher](https://github.com/HakCat-Tech/Nugget-SSDP-Phisher)
@@ -63,5 +47,3 @@ Please be aware that implementing a captive portal may be subject to legal and p
 The WiFi-Nugget platform aims to simplify Wi-Fi development on ESP32-S2 Mini and similar microcontrollers. For more information about WiFi-Nugget or USB nugget, visit the [official website](https://retia.io).
 
 ---
-
-Feel free to customize and expand this README as needed to provide more specific details about your captive portal project. Ensure that you keep it clear and informative for potential users and contributors.

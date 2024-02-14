@@ -20,8 +20,7 @@ const char* activeAP = nullptr; // Store the currently active AP SSID
 const char* ssids[] = {
     "Guest_Wifi",
     "Starbucks_Wifi",
-    "BelfastWiFi",
-    "Costa_Free_WiFi",
+    "FreeWiFi",
     "Customer_WiFi"
 };
 
